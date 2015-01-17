@@ -100,9 +100,9 @@ public class AudioPlayer implements OnCompletionListener, OnPreparedListener, On
         this.recorder = new MediaRecorder();
 
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            this.tempFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tmprecording.m4a";
+            this.tempFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tmprecording.aac";
         } else {
-            this.tempFile = "/data/data/" + handler.cordova.getActivity().getPackageName() + "/cache/tmprecording.m4a";
+            this.tempFile = "/data/data/" + handler.cordova.getActivity().getPackageName() + "/cache/tmprecording.aac";
         }
 
     }
@@ -142,7 +142,7 @@ public class AudioPlayer implements OnCompletionListener, OnPreparedListener, On
             this.audioFile = file;
             this.recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
             this.recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-            this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.HE_AAC);
+            this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
             this.recorder.setOutputFile(this.tempFile);
             try {
                 this.recorder.prepare();
